@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 final lightTheme = _getTheme();
 
-const _primary = Colors.indigo;
+const _primary = Colors.green;
 const _secondary = Colors.amber;
 
 const _background = Color(0xFFF5F5F5);
