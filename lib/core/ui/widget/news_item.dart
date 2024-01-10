@@ -11,7 +11,12 @@ class NewsItemWidget extends StatelessWidget {
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(newsItem.imageUrl, width: 50, height: 100),
+            Image.network(
+              newsItem.imageUrl,
+              //width: 50,
+              height: 300,
+              matchTextDirection: true,
+            ),
             const SizedBox(height: 5),
             Text(
               newsItem.title,

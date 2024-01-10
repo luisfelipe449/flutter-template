@@ -41,7 +41,7 @@ class UrlImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Widget image = CachedNetworkImage(
+    final image = CachedNetworkImage(
       imageUrl: url,
       width: width,
       height: height,

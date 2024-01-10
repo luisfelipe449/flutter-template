@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:scalable_flutter_app_starter/core/extension/context.dart';
 import 'package:scalable_flutter_app_starter/feature/user/ui/widget/profile_tab.dart';
 
+import '../../../../core/ui/dialog/dialogs.dart';
 import '../../../../core/ui/widget/news_item.dart';
 
 class HomePage extends StatefulWidget {
@@ -26,13 +27,17 @@ class _HomePageState extends State<HomePage> {
     newsList = [
       NewsItem(
         title: '09/01/2024 - MEDIDA PREVENTIVA',
-        description: 'Defensoria suspende atendimento nesta terça-feira (9) no edifício Pantanal Business, em Cuiabá',
-        imageUrl: 'https://www.defensoria.mt.def.br/dpmt/cache/imagens/institucional_imagem_pq_Institucional_id_1365.jpg',
+        description:
+            'Defensoria suspende atendimento nesta terça-feira (9) no edifício Pantanal Business, em Cuiabá',
+        imageUrl:
+            'https://www.defensoria.mt.def.br/dpmt/cache/imagens/institucional_imagem_pq_Institucional_id_1365.jpg',
       ),
       NewsItem(
         title: '08/01/2024 - CONSULTA PÚBLICA',
-        description: 'Defensoria Pública quer ouvir sociedade sobre a implantação da inteligência artificial',
-        imageUrl: 'https://www.defensoria.mt.def.br/dpmt/cache/imagens/institucional_imagem_pq_Institucional_id_1364.jpg',
+        description:
+            'Defensoria Pública quer ouvir sociedade sobre a implantação da inteligência artificial',
+        imageUrl:
+            'https://www.defensoria.mt.def.br/dpmt/cache/imagens/institucional_imagem_pq_Institucional_id_1364.jpg',
       ),
       // Add more news items as needed
     ];
@@ -52,12 +57,17 @@ class _HomePageState extends State<HomePage> {
       _HomeTab(
         label: 'Serviços',
         icon: Icons.work,
-        builder: (context) => const Center(child: Text('Explore')),
+        builder: (context) => const Center(child: Text('Explorar serviços')),
       ),
       _HomeTab(
         label: 'Sair',
         icon: Icons.logout,
-        builder: (context) => const ProfileTab(),
+        builder: (context) => GestureDetector(
+          onTap: () {
+            Dialogs.showLogOutConfirmationDialog(context);
+          },
+          child: const Center(child: Text('Deslogar')),
+        ),
       ),
     ];
   }
@@ -73,9 +83,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           NavigationRail(
             selectedIndex: _selectedIndex,
-            onDestinationSelected: (index) {
-              setState(() => _selectedIndex = index);
-            },
+            onDestinationSelected: _handleTabSelection,
             destinations: [
               for (final tab in _tabs)
                 NavigationRailDestination(
@@ -92,7 +100,7 @@ class _HomePageState extends State<HomePage> {
       body = SafeArea(child: content);
       bottomNavigationBar = BottomNavigationBar(
         currentIndex: _selectedIndex,
-        onTap: (index) => setState(() => _selectedIndex = index),
+        onTap: _handleTabSelection,
         items: [
           for (final tab in _tabs)
             BottomNavigationBarItem(
@@ -107,6 +115,13 @@ class _HomePageState extends State<HomePage> {
       body: body,
       bottomNavigationBar: bottomNavigationBar,
     );
+  }
+
+  void _handleTabSelection(int index) {
+    if (index == 2) {
+      Dialogs.showLogOutConfirmationDialog(context);
+    }
+    setState(() => _selectedIndex = index);
   }
 }
 

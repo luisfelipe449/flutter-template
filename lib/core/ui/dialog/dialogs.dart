@@ -31,9 +31,9 @@ sealed class Dialogs {
   ) async {
     final confirmed = await _showConfirmationDialog(
       context,
-      title: 'Sign Out',
-      message: 'Are you sure you want to sign out?',
-      confirmText: 'Sign Out',
+      title: 'Sair',
+      message: 'Tem certeza que deseja sair?',
+      confirmText: 'Sair',
       isDestructive: true,
     );
 

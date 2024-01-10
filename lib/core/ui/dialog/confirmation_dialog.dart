@@ -62,7 +62,7 @@ class _AndroidConfirmationDialog extends StatelessWidget {
             foregroundColor: context.colorScheme.onBackground,
           ),
           onPressed: () => context.pop(),
-          child: const Text('Cancel'),
+          child: const Text('Cancelar'),
         ),
         TextButton(
           style: TextButton.styleFrom(
@@ -93,7 +93,7 @@ class _IosConfirmationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const OutlinedBorder buttonShape = RoundedRectangleBorder(
+    const buttonShape = RoundedRectangleBorder(
       borderRadius: BorderRadius.zero,
     );
 

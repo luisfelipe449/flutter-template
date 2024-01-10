@@ -45,33 +45,34 @@ class _AuthPageState extends State<AuthPage> {
                           'assets/images/logot.png',
                           width: 100,
                           height: 100,
+                          color: const Color.fromARGB(255, 39, 99, 63),
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          _isSignUp ? 'Sign up to continue' : '',
+                          _isSignUp ? '' : '',
                           style: context.textTheme.titleLarge,
                         ),
                         const SizedBox(height: 16),
                         InputField.email(
                           controller: _emailController,
+                          label: 'Usuário',
                         ),
                         const SizedBox(height: 16),
                         InputField.password(
                           controller: _passwordController,
                           textInputAction: TextInputAction.done,
                           onFieldSubmitted: (_) => _submit(),
+                          label: 'Senha',
                         ),
                         const SizedBox(height: 32),
                         ElevatedButton(
                           onPressed: _submit,
-                          child: Text(_isSignUp ? 'Sign Up' : 'Sign In'),
+                          child: Text(_isSignUp ? '' : 'Entrar'),
                         ),
                         const SizedBox(height: 8),
                         LabeledTextButton(
-                          label: _isSignUp
-                              ? 'Already have an account?'
-                              : 'Don’t have an account?',
-                          action: _isSignUp ? 'Sign in' : 'Sign up',
+                          label: _isSignUp ? '' : '',
+                          action: _isSignUp ? 'Entrar' : '',
                           onTap: () => setState(() => _isSignUp = !_isSignUp),
                         ),
                         const Spacer(),
