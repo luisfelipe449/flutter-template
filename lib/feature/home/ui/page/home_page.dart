@@ -25,14 +25,14 @@ class _HomePageState extends State<HomePage> {
     // Initialize newsList here
     newsList = [
       NewsItem(
-        title: 'News Title 1',
-        description: 'Description for News 1',
-        imageUrl: 'https://example.com/news1.jpg',
+        title: '09/01/2024 - MEDIDA PREVENTIVA',
+        description: 'Defensoria suspende atendimento nesta terça-feira (9) no edifício Pantanal Business, em Cuiabá',
+        imageUrl: 'https://www.defensoria.mt.def.br/dpmt/cache/imagens/institucional_imagem_pq_Institucional_id_1365.jpg',
       ),
       NewsItem(
-        title: 'News Title 2',
-        description: 'Description for News 2',
-        imageUrl: 'https://example.com/news2.jpg',
+        title: '08/01/2024 - CONSULTA PÚBLICA',
+        description: 'Defensoria Pública quer ouvir sociedade sobre a implantação da inteligência artificial',
+        imageUrl: 'https://www.defensoria.mt.def.br/dpmt/cache/imagens/institucional_imagem_pq_Institucional_id_1364.jpg',
       ),
       // Add more news items as needed
     ];

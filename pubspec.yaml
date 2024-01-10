@@ -35,3 +35,6 @@ flutter:
 
   assets:
     - assets/fonts/
+    - assets/images/logot.png
+    - assets/images/fundo_menu.jpg
+    - assets/images/Logo-branco.png

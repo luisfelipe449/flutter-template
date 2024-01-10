@@ -13,7 +13,16 @@ final GoRouter router = GoRouter(
   routes: [
     GoRoute(
       path: AppRoute.splash.path,
-      builder: (context, state) => const SplashPage(),
+      //builder: (context, state) => const SplashPage(),
+      builder: (context, state) {
+        return BlocProvider(
+          create: (context) => AuthCubit(
+            userRepository: context.read<UserRepository>(),
+            authRepository: context.read<AuthRepository>(),
+          ),
+          child: const AuthPage(),
+        );
+      },
     ),
     GoRoute(
       path: AppRoute.home.path,

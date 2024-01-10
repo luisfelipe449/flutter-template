@@ -20,7 +20,7 @@ class _AuthPageState extends State<AuthPage> {
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  bool _isSignUp = true;
+  bool _isSignUp = false;
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +41,14 @@ class _AuthPageState extends State<AuthPage> {
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         const Spacer(),
+                        Image.asset(
+                          'assets/images/logot.png',
+                          width: 100,
+                          height: 100,
+                        ),
+                        const SizedBox(height: 16),
                         Text(
-                          _isSignUp
-                              ? 'Sign up to continue'
-                              : 'Sign in to continue',
+                          _isSignUp ? 'Sign up to continue' : '',
                           style: context.textTheme.titleLarge,
                         ),
                         const SizedBox(height: 16),
