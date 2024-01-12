@@ -14,7 +14,7 @@ class SplashPage extends StatelessWidget {
       child: Scaffold(
         body: Center(
           child: Text(
-            'Scalable\nFlutter\nApp',
+            'DPEMT Flutter App',
             textAlign: TextAlign.center,
             style: context.textTheme.headlineLarge,
           ),
