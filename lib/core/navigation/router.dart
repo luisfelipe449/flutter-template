@@ -32,6 +32,7 @@ final GoRouter router = GoRouter(
       path: AppRoute.settings.path,
       builder: (context, state) => const SettingsPage(),
     ),
+    //GoRoute(path: AppRoute.authAd.path, builder: (context, state) => null),
     GoRoute(
       path: AppRoute.auth.path,
       builder: (context, state) {

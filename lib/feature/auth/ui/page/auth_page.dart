@@ -69,11 +69,12 @@ class _AuthPageState extends State<AuthPage> {
                           onPressed: _submit,
                           child: Text(_isSignUp ? '' : 'Entrar'),
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 50),
                         LabeledTextButton(
-                          label: _isSignUp ? '' : '',
-                          action: _isSignUp ? 'Entrar' : '',
-                          onTap: () => setState(() => _isSignUp = !_isSignUp),
+                          label: '',
+                          action: 'Portal do Servidor',
+                          // onTap should send to auth_page_ad.dart
+                          onTap: () => AppRoute.authAd.go(context),
                         ),
                         const Spacer(),
                       ],
@@ -105,9 +106,9 @@ class _AuthPageState extends State<AuthPage> {
   }
 
   void _submit() {
-    if (!_formKey.currentState!.validate()) {
-      return;
-    }
+    // if (!_formKey.currentState!.validate()) {
+    //   return;
+    // }
 
     context.closeKeyboard();
 

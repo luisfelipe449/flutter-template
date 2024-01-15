@@ -6,6 +6,7 @@ enum AppRoute {
   home('/home'),
   settings('/settings'),
   auth('/auth'),
+  authAd('/auth/ad'),
   ;
 
   const AppRoute(this.path);

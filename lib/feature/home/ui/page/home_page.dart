@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:scalable_flutter_app_starter/core/extension/context.dart';
-
 import 'package:scalable_flutter_app_starter/core/ui/widget/news_item.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:scalable_flutter_app_starter/feature/appbar/ui/appbar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -60,21 +62,77 @@ class _HomePageState extends State<HomePage> {
       _HomeTab(
         label: 'Início',
         icon: Icons.home,
-        // builder: (context) => ListView.builder(
-        //   itemCount: newsList.length,
-        //   itemBuilder: (context, index) {
-        //     return NewsItemWidget(newsItem: newsList[index]);
-        //   },
-        // ),
-        // send to route /home
         builder: (context) => Center(
           child: Column(
             children: [
-              Image.asset(
-                'assets/images/logot.png',
-                //width: 100,
-                //height: 100,
-                color: const Color.fromARGB(255, 39, 99, 63),
+              // Stack(
+              //   children: [
+              //     Positioned(
+              //       right: 0,
+              //       child: IconButton(
+              //         onPressed: () {},
+              //         icon: const Icon(Icons.notifications),
+              //         alignment: Alignment.topRight,
+              //       ),
+              //     ),
+              //     Positioned(
+              //       top: 0,
+              //       right: 0,
+              //       child: Container(
+              //         width: 8,
+              //         height: 8,
+              //         decoration: const BoxDecoration(
+              //           color: Colors.red,
+              //           shape: BoxShape.circle,
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/logot.png',
+                      width: 300,
+                      height: 100,
+                      color: const Color.fromARGB(255, 39, 99, 63),
+                      alignment: AlignmentDirectional.center,
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.notifications,
+                      ),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
+              // add search box
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: _searchController,
+                  decoration: const InputDecoration(
+                    labelText: 'Qual serviço você procura?',
+                    hintText: '',
+                    prefixIcon: Icon(Icons.search),
+                    focusColor: Color.fromARGB(255, 39, 99, 63),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(25.0),
+                      ),
+                      borderSide: BorderSide(
+                        color: Color.fromARGB(255, 39, 99, 63),
+                      ),
+                    ),
+                  ),
+                  onChanged: filterSearchResults,
+                ),
               ),
               const SizedBox(height: 20),
               Expanded(
@@ -85,16 +143,48 @@ class _HomePageState extends State<HomePage> {
                   },
                 ),
               ),
+              // FloatingActionButton(
+              //   backgroundColor: Colors.transparent,
+              //   elevation: 0,
+              //   highlightElevation: 0,
+              //   disabledElevation: 0,
+              //   hoverColor: Colors.transparent,
+              //   onPressed: () async {
+              //     const url = 'whatsapp://send?phone=+5565993291981';
+              //     if (await canLaunchUrl(Uri.parse(url))) {
+              //       await launchUrl(Uri.parse(url));
+              //     } else {
+              //       ScaffoldMessenger.of(context).showSnackBar(
+              //         const SnackBar(
+              //           content: Text('WhatsApp não está instalado.'),
+              //         ),
+              //       );
+              //     }
+              //   },
+              //   child: const DecoratedBox(
+              //     decoration: BoxDecoration(
+              //       color: Colors.transparent,
+              //       borderRadius: BorderRadius.all(
+              //         Radius.circular(100),
+              //       ),
+              //       boxShadow: [
+              //         BoxShadow(
+              //           color: Colors.transparent,
+              //           spreadRadius: 1,
+              //           blurRadius: 1,
+              //           offset: Offset(3, 5),
+              //         ),
+              //       ],
+              //     ),
+              //     child: FaIcon(
+              //       FontAwesomeIcons.whatsapp,
+              //       size: 45,
+              //       color: Colors.green,
+              //     ),
+              //   ),
+              // ),
             ],
           ),
-          // child: TextField(
-          //   controller: _searchController,
-          //   onChanged: filterSearchResults,
-          //   decoration: const InputDecoration(
-          //     hintText: 'Search',
-          //     border: InputBorder.none,
-          //   ),
-          // ),
         ),
       ),
       _HomeTab(
@@ -117,16 +207,6 @@ class _HomePageState extends State<HomePage> {
         icon: Icons.person,
         builder: (context) => const Center(child: Text('Perfil')),
       ),
-      // _HomeTab(
-      //   label: 'Perfil',
-      //   icon: Icons.person,
-      //   builder: (context) => GestureDetector(
-      //     onTap: () {
-      //       Dialogs.showLogOutConfirmationDialog(context);
-      //     },
-      //     child: const Center(child: Text('Deslogar')),
-      //   ),
-      // ),
     ];
   }
 
@@ -176,6 +256,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: body,
       bottomNavigationBar: bottomNavigationBar,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 
