@@ -16,8 +16,8 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController(text: 'teste');
+  final _passwordController = TextEditingController(text: '1234');
   final _formKey = GlobalKey<FormState>();
 
   bool _isSignUp = false;
