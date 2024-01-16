@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scalable_flutter_app_starter/core/extension/context.dart';
 import 'package:scalable_flutter_app_starter/core/ui/widget/labeled_text_button.dart';
 
 class NewsItemWidget extends StatelessWidget {
@@ -28,6 +29,16 @@ class NewsItemWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10),
+              if (context.isWide)
+                Text(
+                  newsItem.description,
+                  style: const TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    color: Colors.black,
+                    //color: Color.fromARGB(255, 39, 99, 63),
+                  ),
+                ),
             ],
           ),
         ],
