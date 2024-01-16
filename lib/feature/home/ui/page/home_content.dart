@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scalable_flutter_app_starter/core/extension/context.dart';
 import 'package:scalable_flutter_app_starter/core/ui/widget/news_item.dart';
 
 class HomeContent extends StatefulWidget {
@@ -24,25 +25,24 @@ class _HomeContentState extends State<HomeContent> {
       NewsItem(
         title: 'Agendamento',
         description:
-            'Defensoria suspende atendimento nesta terça-feira (9) no edifício Pantanal Business, em Cuiabá',
+            'Agende seu atendimento presencial na Defensoria Pública do Estado do Mato Grosso.',
         imageUrl: Icons.calendar_month,
       ),
       NewsItem(
         title: 'Meu processo',
         description:
-            'Defensoria Pública quer ouvir sociedade sobre a implantação da inteligência artificial',
+            'Acompanhe o andamento do seu processo na Defensoria Pública do Estado do Mato Grosso.',
         imageUrl: Icons.folder,
       ),
       NewsItem(
         title: 'Ouvidoria',
         description:
-            'Defensoria Pública quer ouvir sociedade sobre a implantação da inteligência artificial',
+            'Sistema de Ouvidoria da Defensoria Pública do Estado do Mato Grosso.',
         imageUrl: Icons.contact_mail,
       ),
       NewsItem(
         title: 'Defensorias',
-        description:
-            'Defensoria Pública quer ouvir sociedade sobre a implantação da inteligência artificial',
+        description: 'Encontre a Defensoria Pública mais próxima de você.',
         imageUrl: Icons.location_city_rounded,
       ),
     ];
@@ -59,12 +59,12 @@ class _HomeContentState extends State<HomeContent> {
             padding: const EdgeInsets.fromLTRB(30, 0, 30, 0),
             child: Row(
               children: [
+                const Spacer(),
                 Image.asset(
                   'assets/images/logot.png',
-                  width: 250,
-                  height: 100,
+                  width: context.isWide ? 400 : 250,
+                  height: context.isWide ? 150 : 100,
                   color: const Color.fromARGB(255, 39, 99, 63),
-                  alignment: AlignmentDirectional.center,
                 ),
                 const Spacer(),
                 IconButton(
@@ -107,9 +107,9 @@ class _HomeContentState extends State<HomeContent> {
               itemBuilder: (context, index) {
                 return NewsItemWidget(newsItem: _filteredItems[index]);
               },
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: 2,
+                childAspectRatio: context.isWide ? 5 : 1.5,
               ),
             ),
           ),

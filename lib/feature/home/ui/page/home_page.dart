@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
       ),
       _HomeTab(
         label: 'Ouvidoria',
-        icon: Icons.feedback,
+        icon: Icons.contact_mail,
         builder: (context) => const Center(child: Text('Sistema de Ouvidoria')),
       ),
       _HomeTab(
