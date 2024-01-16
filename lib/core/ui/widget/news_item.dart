@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:scalable_flutter_app_starter/core/ui/widget/labeled_text_button.dart';
 
 class NewsItemWidget extends StatelessWidget {
   const NewsItemWidget({required this.newsItem, super.key});
@@ -7,30 +8,31 @@ class NewsItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.network(
-            newsItem.imageUrl,
-            //width: 50,
-            height: 250,
-            matchTextDirection: true,
+          Column(
+            children: [
+              Icon(
+                newsItem.imageUrl ?? Icons.error,
+                color: const Color.fromARGB(255, 39, 99, 63),
+                size: 50,
+              ),
+              const SizedBox(height: 5),
+              Text(
+                newsItem.title,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(255, 39, 99, 63),
+                ),
+              ),
+              const SizedBox(height: 10),
+            ],
           ),
-          const SizedBox(height: 5),
-          Text(
-            newsItem.title,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 5),
-          Text(newsItem.description),
-          const SizedBox(height: 20),
         ],
       ),
-      //leading: Image.network(newsItem.imageUrl, width: 50, height: 50),
-      onTap: () {
-        // Add any action you want when a news item is tapped
-      },
+      onTap: () {},
     );
   }
 }
@@ -43,5 +45,5 @@ class NewsItem {
   });
   final String title;
   final String description;
-  final String imageUrl;
+  final IconData imageUrl;
 }
